@@ -112,7 +112,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 
 echo "Activation de l'extension AppIndicator"
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
-echo " - Personnalisation de l'extension"
+echo " - Personnalisation de l'extension background-logo (Fedora)"
 gsettings set org.fedorahosted.background-logo-extension logo-always-visible true
 gsettings set org.fedorahosted.background-logo-extension logo-opacity 222
 
