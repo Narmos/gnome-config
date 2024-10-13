@@ -7,11 +7,11 @@
 # FONCTIONS
 check_cmd() {
 	if [[ $? -eq 0 ]]; then
-			#echo -e "\033[32mOK\033[0m"
-			echo -e "\033[32m\xE2\x9C\x94\033[0m" # vu vert
+		#echo -e "\033[32mOK\033[0m"
+		echo -e "\033[32m\xE2\x9C\x94\033[0m" # vu vert
 	else
-			#echo -e "\033[31mERREUR\033[0m"
-			echo -e "\033[31m\xE2\x9D\x8C\033[0m" # croix rouge
+		#echo -e "\033[31mERREUR\033[0m"
+		echo -e "\033[31m\xE2\x9D\x8C\033[0m" # croix rouge
 	fi
 }
 
