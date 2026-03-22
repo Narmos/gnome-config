@@ -177,6 +177,9 @@ echo "Activation des extensions installées"
 if [[ -z "$(gnome-extensions list --disabled)" ]]; then
 	echo -e " - Il n'y a aucune extension installée à activer"
 else
+	echo -e " - Autoriser les extensions \c"
+	gsettings set org.gnome.shell disable-user-extensions false
+	check_cmd
 	for extension in $(gnome-extensions list --disabled)
 	do
 		echo -e " - Activer l'extension $extension \c"
