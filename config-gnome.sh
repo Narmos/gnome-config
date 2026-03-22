@@ -207,7 +207,6 @@ if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1; then
 	gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
 	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 	#gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
-	gsettings set org.gnome.shell.extensions.dash-to-dock 
 	check_cmd
 fi
 echo
