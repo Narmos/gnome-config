@@ -189,4 +189,27 @@ else
 fi
 echo
 
+echo "Configuration des extensions"
+if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1; then
+	echo -e " - Personnaliser l'extension Dash to Dock \c"
+	gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.05
+	#gsettings set org.gnome.shell.extensions.dash-to-dock background-color 'rgb(34,34,38)'
+	#gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.50
+	#gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color true
+	gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+	gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
+	gsettings set org.gnome.shell.extensions.dash-to-dock hide-delay 0.1
+	gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true
+	gsettings set org.gnome.shell.extensions.dash-to-dock pressure-threshold 50
+	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-dominant-color true
+	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS'
+	gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
+	gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
+	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
+	#gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
+	gsettings set org.gnome.shell.extensions.dash-to-dock 
+	check_cmd
+fi
+echo
+
 echo "Configuration terminée."
