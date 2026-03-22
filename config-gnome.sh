@@ -79,6 +79,9 @@ check_cmd
 echo -e " - Centrer les nouvelles fenêtres \c"
 gsettings set org.gnome.mutter center-new-windows true
 check_cmd
+echo -e " - Désactiver le coin actif \c"
+gsettings set org.gnome.desktop.interface enable-hot-corners false
+check_cmd
 echo -e " - Configurer le format de la date/heure \c"
 gsettings set org.gnome.desktop.interface clock-format '24h'
 gsettings set org.gtk.Settings.FileChooser clock-format '24h'
