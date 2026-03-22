@@ -172,4 +172,18 @@ gsettings set org.gnome.nautilus.preferences click-policy 'double'
 check_cmd
 echo
 
+# Config des extensions
+echo "Activation des extensions installées"
+if [[ -z "$(gnome-extensions list --disabled)" ]]; then
+	echo -e " - Il n'y a aucune extension installée à activer"
+else
+	for extension in $(gnome-extensions list --disabled)
+	do
+		echo -e " - Activer l'extension $extension \c"
+		gnome-extensions enable $extension
+		check_cmd
+	done
+fi
+echo
+
 echo "Configuration terminée."
