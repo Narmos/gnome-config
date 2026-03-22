@@ -81,7 +81,7 @@ gsettings set org.gnome.mutter center-new-windows true
 check_cmd
 echo -e " - Configurer le format de la date/heure \c"
 gsettings set org.gnome.desktop.interface clock-format '24h'
-gsettings set org.gtk.settings.file-chooser clock-format '24h'
+gsettings set org.gtk.Settings.FileChooser clock-format '24h'
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 check_cmd
