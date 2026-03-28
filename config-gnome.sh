@@ -193,7 +193,8 @@ fi
 echo
 
 echo "Configuration des extensions"
-if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1; then
+# Le dock Ubuntu est basé sur Dash to Dock avec les mêmes paramètres gsettings mais un identifiant différent !
+if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1 || gnome-extensions info ubuntu-dock@ubuntu.com > /dev/null 2>&1; then
 	echo -e " - Personnaliser l'extension Dash to Dock \c"
 	gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.05
 	gsettings set org.gnome.shell.extensions.dash-to-dock background-color 'rgb(34,34,38)'
