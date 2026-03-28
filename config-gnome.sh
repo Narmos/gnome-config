@@ -195,13 +195,17 @@ echo
 echo "Configuration des extensions"
 # Le dock Ubuntu est basé sur Dash to Dock avec les mêmes paramètres gsettings mais un identifiant différent !
 if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1 || gnome-extensions info ubuntu-dock@ubuntu.com > /dev/null 2>&1; then
-	echo -e " - Personnaliser l'extension Dash to Dock \c"
+	echo -e " - Personnaliser l'extension Dash to Dock/Ubuntu Dock \c"
 	gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.05
 	gsettings set org.gnome.shell.extensions.dash-to-dock background-color 'rgb(34,34,38)'
-	gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.90
-	gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color true
+	gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.9
 	gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+	gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color true
+	gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false
 	gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
+	gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+	gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 	gsettings set org.gnome.shell.extensions.dash-to-dock hide-delay 0.1
 	gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true
 	gsettings set org.gnome.shell.extensions.dash-to-dock pressure-threshold 50
