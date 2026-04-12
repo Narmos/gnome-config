@@ -175,7 +175,6 @@ gsettings set org.gnome.nautilus.preferences click-policy 'double'
 check_cmd
 echo
 
-if dpkg-query --status ptyxis > /dev/null 2>&1; then
 echo "Configuration de Ptyxis"
 echo -e " - Désactiver la restauration de la session/taille \c"
 gsettings set org.gnome.Ptyxis restore-session false
@@ -186,7 +185,6 @@ gsettings set org.gnome.Ptyxis default-columns 90
 gsettings set org.gnome.Ptyxis default-rows 32
 check_cmd
 echo
-fi
 
 # Config des extensions
 echo "Activation des extensions installées"
