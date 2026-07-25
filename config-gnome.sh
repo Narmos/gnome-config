@@ -7,10 +7,8 @@
 # FONCTIONS
 check_cmd() {
 	if [[ $? -eq 0 ]]; then
-		#echo -e "\033[32mOK\033[0m"
 		echo -e "\033[32m\xE2\x9C\x94\033[0m" # vu vert
 	else
-		#echo -e "\033[31mERREUR\033[0m"
 		echo -e "\033[31m\xE2\x9D\x8C\033[0m" # croix rouge
 	fi
 }
@@ -109,6 +107,7 @@ gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers' # clique secondaire à 2 doigts
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.15
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 check_cmd
@@ -187,19 +186,28 @@ check_cmd
 echo
 
 # Config des extensions
-echo "Activation des extensions installées"
-if [[ -z "$(gnome-extensions list --disabled)" ]]; then
-	echo -e " - Il n'y a aucune extension installée à activer"
-else
-	echo -e " - Autoriser les extensions \c"
-	gsettings set org.gnome.shell disable-user-extensions false
-	check_cmd
-	for extension in $(gnome-extensions list --disabled)
-	do
-		echo -e " - Activer l'extension $extension \c"
-		gnome-extensions enable $extension
+if [[ ${ID} == "ubuntu" ]]; then
+	echo "Désactivation des extensions installées"
+	ubuntu_extensions_disable=("ding@rastersoft.com" "snapd-search-provider@canonical.com" "web-search-provider@ubuntu.com")
+	for extension in ${ubuntu_extensions_disable[@]}; do
+		echo -e " - Désactiver l'extension $extension \c"
+		gnome-extensions disable $extension
 		check_cmd
 	done
+else
+	echo "Activation des extensions installées"
+	if [[ -z "$(gnome-extensions list --disabled)" ]]; then
+		echo -e " - Il n'y a aucune extension installée à activer"
+	else
+		echo -e " - Autoriser les extensions \c"
+		gsettings set org.gnome.shell disable-user-extensions false
+		check_cmd
+		for extension in $(gnome-extensions list --disabled); do
+			echo -e " - Activer l'extension $extension \c"
+			gnome-extensions enable $extension
+			check_cmd
+		done
+	fi
 fi
 echo
 
@@ -228,6 +236,18 @@ if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1 || gnome
 	gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 	check_cmd
 fi
+
+# Pas encore de schéma dans dconf pour faire les modifs via script
+#if gnome-extensions info simple-taskbar@sultech > /dev/null 2>&1; then
+#	echo -e " - Personnaliser l'extension Simple Taskbar \c"
+#	gsettings set org.gnome.shell.extensions.simple-taskbar hot-edge-overview-enabled false
+#	gsettings set org.gnome.shell.extensions.simple-taskbar icon-size 32
+#	gsettings set org.gnome.shell.extensions.simple-taskbar panel-height 48
+#	gsettings set org.gnome.shell.extensions.simple-taskbar start-menu-open-all-apps true
+#	gsettings set org.gnome.shell.extensions.simple-taskbar transparency-level 50
+#	check_cmd
+#fi
+
 echo
 
 echo "Configuration terminée."
