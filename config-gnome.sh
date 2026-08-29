@@ -187,14 +187,14 @@ echo
 
 # Config des extensions
 if [[ ${ID} == "ubuntu" ]]; then
-	echo "Désactivation des extensions installées"
+	echo "Désactivation des extensions préinstallées"
 	ubuntu_extensions_disable=("ding@rastersoft.com" "snapd-search-provider@canonical.com" "web-search-provider@ubuntu.com")
 	for extension in ${ubuntu_extensions_disable[@]}; do
 		echo -e " - Désactiver l'extension $extension \c"
 		gnome-extensions disable $extension
 		check_cmd
 	done
-else
+elif [[ ${ID} == "debian" ]]; then
 	echo "Activation des extensions installées"
 	if [[ -z "$(gnome-extensions list --disabled)" ]]; then
 		echo -e " - Il n'y a aucune extension installée à activer"
@@ -236,17 +236,6 @@ if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1 || gnome
 	gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 	check_cmd
 fi
-
-# Pas encore de schéma dans dconf pour faire les modifs via script
-#if gnome-extensions info simple-taskbar@sultech > /dev/null 2>&1; then
-#	echo -e " - Personnaliser l'extension Simple Taskbar \c"
-#	gsettings set org.gnome.shell.extensions.simple-taskbar hot-edge-overview-enabled false
-#	gsettings set org.gnome.shell.extensions.simple-taskbar icon-size 32
-#	gsettings set org.gnome.shell.extensions.simple-taskbar panel-height 48
-#	gsettings set org.gnome.shell.extensions.simple-taskbar start-menu-open-all-apps true
-#	gsettings set org.gnome.shell.extensions.simple-taskbar transparency-level 50
-#	check_cmd
-#fi
 
 echo
 
