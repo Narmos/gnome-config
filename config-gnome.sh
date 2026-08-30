@@ -66,6 +66,15 @@ if [[ ${ID} == "fedora" ]]; then
 	echo
 fi
 
+# Config spécifique au Lenovo ThinkPad X9-15 gen 1
+if [[ "$(cat /sys/devices/virtual/dmi/id/product_version 2>/dev/null)" == "ThinkPad X9-15 Gen 1" ]]; then
+	echo "Configuration spécifique au Lenovo ThinkPad X9-15 gen 1"
+	echo -e " - Désactiver le Built-in Scaling for Legacy Apps \c"
+	gsettings set org.gnome.mutter.wayland xwayland-scaling-factor 1.0
+	check_cmd
+	echo
+fi
+
 # Config globale
 echo "Configuration générale de GNOME"
 echo -e " - Appliquer le thème sombre \c"
