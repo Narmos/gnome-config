@@ -60,7 +60,7 @@ fi
 if [[ ${ID} == "fedora" ]]; then
 	echo "Configuration spécifique à Fedora"
 	echo -e " - Personnaliser le logo Fedora (filigrane sur fond d'écran) \c"
-	gsettings set org.fedorahosted.background-logo-extension logo-always-visible true
+	gsettings set org.fedorahosted.background-logo-extension logo-always-visible true && \
 	gsettings set org.fedorahosted.background-logo-extension logo-opacity 222
 	check_cmd
 	echo
@@ -90,34 +90,34 @@ echo -e " - Désactiver le coin actif \c"
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 check_cmd
 echo -e " - Configurer le format de la date/heure \c"
-gsettings set org.gnome.desktop.interface clock-format '24h'
-gsettings set org.gtk.Settings.FileChooser clock-format '24h'
-gsettings set org.gnome.desktop.interface clock-show-date true
+gsettings set org.gnome.desktop.interface clock-format '24h' && \
+gsettings set org.gtk.Settings.FileChooser clock-format '24h' && \
+gsettings set org.gnome.desktop.interface clock-show-date true && \
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 check_cmd
 echo -e " - Afficher le numéro de semaine dans le calendrier \c"
 gsettings set org.gnome.desktop.calendar show-weekdate true
 check_cmd
 echo -e " - Configurer le mode nuit \c"
-gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic false
-gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from 19.0
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true && \
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic false && \
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from 19.0 && \
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to 9.0
 check_cmd
 echo -e " - Action du bouton d'extinction : ne rien faire \c"
 gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
 check_cmd
 echo -e " - Désactiver les sons système \c"
-gsettings set org.gnome.desktop.sound event-sounds false
+gsettings set org.gnome.desktop.sound event-sounds false && \
 gsettings set org.gnome.desktop.wm.preferences audible-bell false
 check_cmd
 echo -e " - Configurer la souris/le touchpad \c"
-gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
-gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers' # clique secondaire à 2 doigts
-gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
-gsettings set org.gnome.desktop.peripherals.touchpad speed 0.15
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false && \
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers' && \
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true && \
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false && \
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.15 && \
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false && \
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 check_cmd
 echo
@@ -136,9 +136,9 @@ echo -e " - Désactiver l'envoi de statistiques quand des applications sont inst
 gsettings set org.gnome.desktop.privacy send-software-usage-stats false
 check_cmd
 echo -e " - Epuration de l'historique, des fichiers temporaires et de la corbeille de plus de 30 jours \c"
-gsettings set org.gnome.desktop.privacy recent-files-max-age '30'
-gsettings set org.gnome.desktop.privacy old-files-age '30'
-gsettings set org.gnome.desktop.privacy remove-old-temp-files true
+gsettings set org.gnome.desktop.privacy recent-files-max-age '30' && \
+gsettings set org.gnome.desktop.privacy old-files-age '30' && \
+gsettings set org.gnome.desktop.privacy remove-old-temp-files true && \
 gsettings set org.gnome.desktop.privacy remove-old-trash-files true
 check_cmd
 echo
@@ -175,7 +175,7 @@ echo
 
 echo "Configuration de Nautilus"
 echo -e " - Afficher les dossiers en premier \c"
-gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
+gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true && \
 gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 check_cmd
 echo -e " - Configurer le double clic pour ouvrir les éléments \c"
@@ -185,11 +185,11 @@ echo
 
 echo "Configuration de Ptyxis"
 echo -e " - Désactiver la restauration de la session/taille \c"
-gsettings set org.gnome.Ptyxis restore-session false
+gsettings set org.gnome.Ptyxis restore-session false && \
 gsettings set org.gnome.Ptyxis restore-window-size false
 check_cmd
 echo -e " - Configurer la taille de la fenêtre \c"
-gsettings set org.gnome.Ptyxis default-columns 90
+gsettings set org.gnome.Ptyxis default-columns 90 && \
 gsettings set org.gnome.Ptyxis default-rows 32
 check_cmd
 echo
@@ -224,24 +224,24 @@ echo "Configuration des extensions"
 # Le dock Ubuntu est basé sur Dash to Dock avec les mêmes paramètres gsettings mais un identifiant différent !
 if gnome-extensions info dash-to-dock@micxgx.gmail.com > /dev/null 2>&1 || gnome-extensions info ubuntu-dock@ubuntu.com > /dev/null 2>&1; then
 	echo -e " - Personnaliser l'extension Dash to Dock/Ubuntu Dock \c"
-	gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.05
-	gsettings set org.gnome.shell.extensions.dash-to-dock background-color 'rgb(34,34,38)'
-	gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.9
-	gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-	gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color true
-	gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false
-	gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true
-	gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-	gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-	gsettings set org.gnome.shell.extensions.dash-to-dock hide-delay 0.1
-	gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true
-	gsettings set org.gnome.shell.extensions.dash-to-dock pressure-threshold 50
-	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-dominant-color true
-	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS'
-	gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
-	gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
+	gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.05 && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock background-color 'rgb(34,34,38)' && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.9 && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize' && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color true && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock disable-overview-on-startup true && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM' && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock hide-delay 0.1 && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock pressure-threshold 50 && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-dominant-color true && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS' && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows' && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true && \
+	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false && \
 	gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 	check_cmd
 fi
