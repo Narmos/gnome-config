@@ -13,7 +13,7 @@ chmod +x config-gnome.sh
 ```
 
 > [!IMPORTANT]
-> N'exécutez pas le script avec les privilèges super-utilisateur (`sudo`), sinon cela impactera la session root au lieu de celle de l'utilisateur courant !
+> N'exécutez pas le script avec les privilèges super-utilisateur `sudo`, sinon cela impactera la session root au lieu de celle de l'utilisateur courant !
 
 ---
 
