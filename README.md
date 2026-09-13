@@ -1,6 +1,6 @@
 # Ma configuration GNOME
 
-Script d'automatisation pour personnaliser rapidement l'environnement de bureau **GNOME** via `gsettings`.
+Script d'automatisation pour personnaliser rapidement mon environnement de bureau **GNOME** via `gsettings`.
 
 ---
 
