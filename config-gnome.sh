@@ -75,7 +75,7 @@ if [[ ${OSR_ID} == "debian" ]]; then
 fi
 
 ## Fedora
-if [[ ${OSR_ID} == "fedora" ]]; then
+if [[ ${OSR_ID} == "fedora" || ${OSR_ID} == "fedora-asahi-remix" ]]; then
 	echo "Fedora"
 
 	echo -n " ↳ Personnaliser le logo Fedora (filigrane sur fond d'écran) "
